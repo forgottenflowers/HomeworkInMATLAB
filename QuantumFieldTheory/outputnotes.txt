@@ -1,0 +1,438 @@
+pour booll.txt
+>> syms dh
+>> syms dh$
+>> syms dhb
+>> syms dbh
+>> syms dbhb
+>> d1h11=(dh+dhb+dbh+dbhb)
+
+
+
+
+
+
+
+
+double('a')=97
+double('z')=122
+double('1')=49
+double('9')=57
+double('0')=48
+
+
+
+
+enter='2';
+dim=double(enter)-48
+
+
+
+
+
+
+
+
+
+>> syms d1h11
+>> syms d2h11
+>> syms d1h12
+>> syms d2h12
+>> d1H=[d1h11 d1h12; d1h12 -d1h11]
+ 
+d1H =
+ 
+[ d1h11,  d1h12]
+[ d1h12, -d1h11]
+ 
+>> d2H=[d2h11 d2h12; d2h12 -d2h11]
+ 
+d2H =
+ 
+[ d2h11,  d2h12]
+[ d2h12, -d2h11]
+ 
+>> d1H.*d2H
+ 
+ans =
+ 
+[ d1h11*d2h11, d1h12*d2h12]
+[ d1h12*d2h12, d1h11*d2h11]
+ 
+>> M=d1H.*d1H+d1H.*d2H+d2H.*d1H+d2H.*d2H
+ 
+M =
+ 
+[ d1h11^2 + 2*d1h11*d2h11 + d2h11^2, d1h12^2 + 2*d1h12*d2h12 + d2h12^2]
+[ d1h12^2 + 2*d1h12*d2h12 + d2h12^2, d1h11^2 + 2*d1h11*d2h11 + d2h11^2]
+ 
+>> M(1,1)+M(1,2)+M(2,1)+M(2,2)
+ 
+ans =
+ 
+2*d1h11^2 + 4*d1h11*d2h11 + 2*d1h12^2 + 4*d1h12*d2h12 + 2*d2h11^2 + 2*d2h12^2
+ 
+
+
+
+
+
+
+
+
+
+
+>> a=1;
+>> b=2;
+>> c=3;
+>> A=[a b c]
+
+A =
+
+     1     2     3
+
+
+
+
+>> a=1;
+>> parfor loopvar=1:3;
+a=a+1;
+end
+>> a
+
+a =
+
+     4
+
+
+
+
+>> rand(4,4)
+>> rand(10,1,2)
+
+ans(:,:,1) =
+
+    0.4218
+    0.9157
+    0.7922
+    0.9595
+    0.6557
+    0.0357
+    0.8491
+    0.9340
+    0.6787
+    0.7577
+
+
+ans(:,:,2) =
+
+    0.7431
+    0.3922
+    0.6555
+    0.1712
+    0.7060
+    0.0318
+    0.2769
+    0.0462
+    0.0971
+    0.8235
+
+
+
+
+
+
+
+
+
+
+
+
+>> syms h11
+>> syms h22
+>> syms h12
+>> H=[h11 h12; h12 -h11]
+ 
+H =
+ 
+[ h11,  h12]
+[ h12, -h11]
+>> syms d1
+>> syms d2
+>> NewH=strcat(char(H),char(d1))
+
+NewH =
+
+matrix([[h11, h12], [h12, -h11]])d1
+
+>> y=[a b c]
+
+y =
+
+     1     2     3
+
+>> y=['a' 'b' 'c']
+
+y =
+
+abc
+
+>> syms y(1)
+??? Error using ==> syms at 61
+Not a valid variable name.
+ 
+>> syms char(y(1))
+??? Error using ==> syms at 61
+Not a valid variable name.
+ 
+>> syms char(48)
+??? Error using ==> syms at 61
+Not a valid variable name.
+ 
+>> syms #
+??? Error using ==> syms at 61
+Not a valid variable name.
+ 
+>> H
+ 
+H =
+ 
+[ h11,  h12]
+[ h12, -h11]
+ 
+>> H+1
+ 
+ans =
+ 
+[ h11 + 1, h12 + 1]
+[ h12 + 1, 1 - h11]
+ 
+>> d1*H
+ 
+ans =
+ 
+[ d1*h11,  d1*h12]
+[ d1*h12, -d1*h11]
+ 
+>> d1*H*d2*H
+ 
+ans =
+ 
+[ d1*d2*h11^2 + d1*d2*h12^2,                         0]
+[                         0, d1*d2*h11^2 + d1*d2*h12^2]
+ 
+>> d1*H*d1*H+d2*H*d2*H+d1*H*d2*H+d2*H*d1*H
+ 
+ans =
+ 
+[ d1^2*h11^2 + d1^2*h12^2 + 2*d1*d2*h11^2 + 2*d1*d2*h12^2 + d2^2*h11^2 + d2^2*h12^2,                                                                                 0]
+[                                                                                 0, d1^2*h11^2 + d1^2*h12^2 + 2*d1*d2*h11^2 + 2*d1*d2*h12^2 + d2^2*h11^2 + d2^2*h12^2]
+ 
+>> H(2)(2)
+??? Error: ()-indexing must appear last in an index expression.
+ 
+>> H(2,2)
+ 
+ans =
+ 
+-h11
+ 
+>> aaa=d1*H*d1*H+d2*H*d2*H+d1*H*d2*H+d2*H*d1*H
+ 
+aaa =
+ 
+[ d1^2*h11^2 + d1^2*h12^2 + 2*d1*d2*h11^2 + 2*d1*d2*h12^2 + d2^2*h11^2 + d2^2*h12^2,                                                                                 0]
+[                                                                                 0, d1^2*h11^2 + d1^2*h12^2 + 2*d1*d2*h11^2 + 2*d1*d2*h12^2 + d2^2*h11^2 + d2^2*h12^2]
+ 
+>> aaa(2,2)
+ 
+ans =
+ 
+d1^2*h11^2 + d1^2*h12^2 + 2*d1*d2*h11^2 + 2*d1*d2*h12^2 + d2^2*h11^2 + d2^2*h12^2
+ 
+>> aaa(1,2)
+ 
+ans =
+ 
+0
+ 
+>> aaa(1,1)+aaa(2,2)
+ 
+ans =
+ 
+2*d1^2*h11^2 + 2*d1^2*h12^2 + 4*d1*d2*h11^2 + 4*d1*d2*h12^2 + 2*d2^2*h11^2 + 2*d2^2*h12^2
+
+
+
+
+
+
+
+
+
+>> syms h11
+>> syms h12
+>> syms d1
+>> syms d2
+>> H=[h11 h12; h12 -h12]
+ 
+H =
+ 
+[ h11,  h12]
+[ h12, -h12]
+ 
+>> H
+ 
+H =
+ 
+[ h11,  h12]
+[ h12, -h12]
+ 
+>> h=(h11+ih12)/sqrt(2)
+??? Undefined function or variable 'ih12'.
+ 
+>> h=(h11+i*h12)/sqrt(2)
+ 
+h =
+ 
+(2^(1/2)*(h11 + h12*i))/2
+ 
+>> h
+ 
+h =
+ 
+(2^(1/2)*(h11 + h12*i))/2
+ 
+>> h=(h11-i*h12)/sqrt(2)
+ 
+h =
+ 
+(2^(1/2)*(h11 - h12*i))/2
+ 
+>> h=(h11+i*h12)/sqrt(2)
+ 
+h =
+ 
+(2^(1/2)*(h11 + h12*i))/2
+ 
+>> hc=(h11-i*h12)/sqrt(2)
+ 
+hc =
+ 
+(2^(1/2)*(h11 - h12*i))/2
+ 
+>> d=(d1+i*d2)/sqrt(2)
+ 
+d =
+ 
+(2^(1/2)*(d1 + d2*i))/2
+ 
+>> dc=(d1-i*d2)/sqrt(2)
+ 
+dc =
+ 
+(2^(1/2)*(d1 - d2*i))/2
+ 
+>> d1h11=strcat(d1,h11)
+??? In an assignment  A(:) = B, the number of elements in A and B
+must be the same.
+
+Error in ==> strcat at 87
+    s(1:pos) = str;
+ 
+>> d1
+ 
+d1 =
+ 
+d1
+ 
+>> char(d1)
+
+ans =
+
+d1
+
+>> char(h11)
+
+ans =
+
+h11
+
+>> strcat(d1,h11)
+??? In an assignment  A(:) = B, the number of elements in A and B
+must be the same.
+
+Error in ==> strcat at 87
+    s(1:pos) = str;
+ 
+>> d1h11=strcat(cahr(d1),char(h11))
+??? Undefined function or method 'cahr' for input arguments of type 'sym'.
+ 
+>> d1h11=strcat(char(d1),char(h11))
+
+d1h11 =
+
+d1h11
+
+>> d1h12=strcat(char(d1),char(h12))
+
+d1h12 =
+
+d1h12
+
+>> d2h12=strcat(char(d2),char(h12))
+
+d2h12 =
+
+d2h12
+
+>> d2h11=strcat(char(d2),char(h11))
+
+d2h11 =
+
+d2h11
+
+>> d1h21=d1h12
+
+d1h21 =
+
+d1h12
+
+>> d2h21=d1h21
+
+d2h21 =
+
+d1h12
+
+>> d2h22=strcat(char(d1),char(-h11))
+
+d2h22 =
+
+d1-h11
+
+>> d2h22=-strcat(char(d1),char(h11))
+
+d2h22 =
+
+  -100   -49  -104   -49   -49
+
+>> d2h22=strcat('-',char(d1),char(h11))
+
+d2h22 =
+
+-d1h11
+
+>> d2h22=strcat('-',char(d2),char(h11))
+
+d2h22 =
+
+-d2h11
+
+>> d1h22=strcat('-',char(d1),char(h11))
+
+d1h22 =
+
+-d1h11
+
+>> dihkldjhkl=2*(d1h11*d2h11+d1h12*d2h12+d1h21*d2h21+d1h22*d2h22)
+??? Error using ==> mtimes
+Inner matrix dimensions must agree.
